@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap');
 @import 'tailwindcss';
 
 @plugin "tailwindcss-animate";
@@ -109,5 +110,11 @@
   }
   body {
     @apply bg-background text-foreground;
+    /* font-family: 'Iansui', cursive, sans-serif; */
+  }
+  .caveat-brush-regular {
+    font-family: 'Caveat Brush', cursive;
+    font-weight: 400;
+    font-style: normal;
   }
 }

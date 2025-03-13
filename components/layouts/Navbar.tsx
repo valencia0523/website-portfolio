@@ -7,6 +7,7 @@ import { FaLinkedin } from 'react-icons/fa';
 import { FaGithub } from 'react-icons/fa';
 import { Button } from '@/components/ui/button';
 import { DarkModeToggle } from '../ui/darkModeToggle';
+import { usePathname } from 'next/navigation';
 
 type NavbarItems = {
   href: string;
@@ -39,39 +40,54 @@ function Navbar() {
   //button
   const [isNavbarOpen, setIsNavbarOpen] = useState<boolean>(false);
 
+  //current url (to show the active button)
+  const pathname = usePathname();
+
   return (
     <nav
-      className="fixed top-0 left-0 w-full z-50 p-5 lg:flex lg:justify-center lg:gap-100  
-   
-    border-b-2 border-amber-500"
+      className="fixed top-0 left-0 w-full z-50 p-5
+      lg:flex lg:justify-center lg:gap-100   
+      bg-[#FFE87C] dark:bg-[#202920]"
     >
       <div className="flex justify-between">
         {/* logo */}
-        <div className="mt-1.5 text-2xl">
+        <Button className="mt-1.5 text-3xl caveat-brush-regular rounded-3xl shadow-current dark:shadow-amber-200">
           <Link href="/">Valencia M</Link>
-        </div>
+        </Button>
 
         {/* nav-right side */}
-        <Button
-          size="icon"
-          className="scale-200 lg:hidden"
-          variant="ghost"
-          onClick={() => setIsNavbarOpen(!isNavbarOpen)}
-        >
-          <HiMenu className="w-28 block" />
-        </Button>
+        {/* small screen navbar */}
+        <div className="mt-1.5">
+          <Button
+            size="icon"
+            className="scale-200 lg:hidden"
+            variant="ghost"
+            onClick={() => setIsNavbarOpen(!isNavbarOpen)}
+          >
+            <HiMenu className="w-28 block" />
+          </Button>
+          <DarkModeToggle className="lg:hidden scale-80 hover:cursor-pointer" />
+        </div>
       </div>
 
-      {/* small screen navbar */}
       <div
-        className={`text-2xl pt-5 pb-3 lg:hidden
-          ${isNavbarOpen ? 'block' : 'hidden'}`}
+        className={`text-2xl pb-2 lg:hidden transition-all duration-500 ease-in-out
+    ${
+      isNavbarOpen
+        ? 'opacity-100 max-h-[500px]'
+        : 'opacity-0 max-h-0 overflow-hidden'
+    }`}
       >
-        <div className="flex flex-col items-center gap-2 w-full">
+        <div className="flex flex-col items-center gap-2 w-full mt-5">
           {navbarItems.map((item) => {
             return (
-              <div className="w-full border-b-2 border-amber-500 text-center pb-2">
-                <Link key={item.href} href={item.href}>
+              <div className="w-full border-b-1 border-white text-center pb-2">
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="active:underline active:decoration-yellow-500 transition-discrete"
+                  onClick={() => setIsNavbarOpen(false)}
+                >
                   {item.label}
                 </Link>
               </div>
@@ -90,19 +106,28 @@ function Navbar() {
       </div>
 
       {/* big screen navbar */}
-      <div className="hidden lg:flex gap-3">
-        <div className="flex text-xl gap-3">
+      <div className="hidden lg:flex gap-3 justify-center items-center pt-2">
+        <div className="flex text-2xl gap-4">
           {navbarItems.map((item) => {
             return (
               <div>
-                <Link key={item.href} href={item.href}>
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`hover:cursor-pointer hover:underline hover:decoration-yellow-400
+                    ${
+                      pathname === item.href
+                        ? 'underline decoration-double decoration-yellow-400'
+                        : ''
+                    }`}
+                >
                   {item.label}
                 </Link>
               </div>
             );
           })}
         </div>
-        <div className="flex text-2xl gap-3">
+        <div className="flex text-4xl gap-3 ml-2">
           {navbarIcons.map((icon) => {
             return (
               <Link key={icon.href} href={icon.href}>
@@ -110,7 +135,7 @@ function Navbar() {
               </Link>
             );
           })}
-          <DarkModeToggle />
+          <DarkModeToggle className="ml-3 scale-93 hover:cursor-pointer" />
         </div>
       </div>
     </nav>

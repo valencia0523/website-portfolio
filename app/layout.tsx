@@ -1,13 +1,11 @@
 import './globals.css';
 import Navbar from '@/components/layouts/Navbar';
 import type { Metadata } from 'next';
-import { Inter, Inconsolata, Roboto } from 'next/font/google';
+import { Roboto } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 
-//다양한 font 예시
-const inter = Inter({ subsets: ['latin'] });
-//const inconsolate = Inconsolata({ subsets: ['latin'] });
-//const roboto = Roboto({ subsets: ['latin'], weight: ['400'] });
+//font
+const roboto = Roboto({ subsets: ['latin'], weight: ['400'] });
 
 export const metadata: Metadata = {
   title: 'Valencia M Portfolio',
@@ -24,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={roboto.className}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
