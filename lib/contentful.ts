@@ -1,35 +1,5 @@
-/*
-import { createClient, Entry, Asset } from 'contentful';
-
-const client = createClient({
-  space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID!,
-  accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN!,
-});
-
-export async function getProjects() {
-  try {
-    const response = await client.getEntries({ content_type: 'my-portfolio' });
-
-    // 데이터 변환
-    const projects = response.items.map((item) => ({
-      id: item.sys.id,
-      title: item.fields.title as string,
-      url: item.fields.url as string,
-      slug: item.fields.slug as string,
-      description: item.fields.description, // Rich Text 그대로 유지
-      image: (item.fields.image as Asset)?.fields?.file?.url || '',
-      techStack: item.fields['tech-stack'], // Rich Text 그대로 유지
-    }));
-
-    return projects;
-  } catch (error) {
-    console.error('Contentful fetch error:', error);
-    return [];
-  }
-}
-*/
-
-import { createClient } from 'contentful';
+import { createClient, EntrySkeletonType } from 'contentful';
+import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 
 const accessToken = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN;
 if (!accessToken) {
@@ -38,22 +8,58 @@ if (!accessToken) {
 
 const client = createClient({
   space: '1h6ld89b45c3',
-  environment: 'master-portfolio',
+  environment: 'master',
   accessToken,
 });
 
-export async function getProjects() {
+interface ImageField {
+  fields: {
+    file: {
+      url: string;
+    };
+  };
+}
+
+interface ProjectSkeleton extends EntrySkeletonType {
+  fields: {
+    title: string;
+    url: string;
+    techStack?: Document | null;
+    // image?: Asset[];
+    // image?: { fields: { file: { url: string } } }[];
+    image?: ImageField[];
+  };
+}
+
+type Project = {
+  title: string;
+  url: string;
+  id: string;
+  techStack: string;
+  image?: string;
+};
+
+export async function fetchProjects(): Promise<Project[]> {
   try {
-    const response = await client.getEntries({ content_type: 'my-portfolio' });
-    const projects = response.items.map((item) => {
-      const { title, url, slug, description } = item.fields;
-      const id = item.sys.id;
-      // const img = image?.fields?.file?.url;
-      return { title, url, slug, description };
+    const response = await client.getEntries<ProjectSkeleton>({
+      content_type: 'myPortfolio',
     });
+
+    const projects: Project[] = response.items.map((item) => {
+      const { title, url, techStack, image } = item.fields;
+      const img = image?.[0]?.fields?.file?.url || '';
+      const id = item.sys.id;
+      const techStackText =
+        techStack && typeof techStack === 'object' && 'nodeType' in techStack
+          ? documentToPlainTextString(techStack)
+          : '';
+
+      return { title, url, id, techStack: techStackText, image: img };
+    });
+
     return projects;
   } catch (error) {
-    console.log('haha');
+    console.log(error);
     return [];
   }
 }

@@ -30,7 +30,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          <main className="max-w-3xl mx-auto py-10 pt-25">{children}</main>
+          <main className="py-10 pt-22">{children}</main>
         </ThemeProvider>
       </body>
     </html>

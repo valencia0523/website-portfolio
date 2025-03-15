@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@contentful/rich-text-plain-text-renderer": "^17.0.0",
     "@radix-ui/react-dropdown-menu": "^2.1.6",
     "@radix-ui/react-menubar": "^1.1.6",
     "@radix-ui/react-slot": "^1.1.2",
@@ -17,6 +18,7 @@
     "clsx": "^2.1.1",
     "contentful": "^11.5.6",
     "date-fns": "^3.6.0",
+    "framer-motion": "^12.5.0",
     "lucide-react": "^0.479.0",
     "next": "15.2.0",
     "next-themes": "^0.4.4",
