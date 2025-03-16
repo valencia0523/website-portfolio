@@ -1,5 +1,6 @@
+'use client';
+
 import Banner from '@/components/layouts/Banner';
-import React from 'react';
 
 const ProjectsPage = () => {
   return (
