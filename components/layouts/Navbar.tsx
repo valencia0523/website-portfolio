@@ -81,9 +81,11 @@ function Navbar() {
         <div className="flex flex-col items-center gap-2 w-full mt-5">
           {navbarItems.map((item) => {
             return (
-              <div className="w-full border-b-1 border-white text-center pb-2">
+              <div
+                key={item.href}
+                className="w-full border-b-1 border-white text-center pb-2"
+              >
                 <Link
-                  key={item.href}
                   href={item.href}
                   className="active:underline active:decoration-yellow-500 transition-discrete"
                   onClick={() => setIsNavbarOpen(false)}
@@ -110,9 +112,8 @@ function Navbar() {
         <div className="flex text-2xl gap-4">
           {navbarItems.map((item) => {
             return (
-              <div>
+              <div key={item.href}>
                 <Link
-                  key={item.href}
                   href={item.href}
                   className={`hover:cursor-pointer hover:underline hover:decoration-yellow-400
                     ${

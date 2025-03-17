@@ -1,5 +1,6 @@
 import { createClient, EntrySkeletonType } from 'contentful';
 import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
+import { Project } from './types';
 
 const accessToken = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN;
 if (!accessToken) {
@@ -12,7 +13,19 @@ const client = createClient({
   accessToken,
 });
 
+/*
 interface ImageField {
+  fields: {
+    file: {
+      url: string;
+    };
+  };
+}
+*/
+
+interface ImageField {
+  metadata: unknown;
+  sys: unknown;
   fields: {
     file: {
       url: string;
@@ -31,21 +44,14 @@ interface ProjectSkeleton extends EntrySkeletonType {
   };
 }
 
-type Project = {
-  title: string;
-  url: string;
-  id: string;
-  techStack: string;
-  image?: string;
-};
-
 export async function fetchProjects(): Promise<Project[]> {
   try {
     const response = await client.getEntries<ProjectSkeleton>({
       content_type: 'myPortfolio',
     });
 
-    const projects: Project[] = response.items.map((item) => {
+    // !!! Resolve the issue 'item:any' !!!!!
+    const projects: Project[] = response.items.map((item: any) => {
       const { title, url, techStack, image } = item.fields;
       const img = image?.[0]?.fields?.file?.url || '';
       const id = item.sys.id;

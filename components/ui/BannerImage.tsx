@@ -1,12 +1,7 @@
 import Image from 'next/image';
-import { StaticImageData } from 'next/image';
+import { ImageProps } from '@/lib/types';
 
-type BannerImageProps = {
-  image: StaticImageData;
-  altText: string;
-};
-
-const BannerImage = ({ image, altText }: BannerImageProps) => {
+const BannerImage = ({ image, altText }: ImageProps) => {
   return <Image src={image} alt={altText} className="w-full h-auto" />;
 };
 

@@ -13,7 +13,7 @@ const Banner = () => {
     gsap.fromTo(
       bannerRef.current,
       { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }
+      { opacity: 1, y: 0, duration: 2, ease: 'power3.out' }
     );
   }, []);
 
@@ -21,7 +21,7 @@ const Banner = () => {
     <>
       <div
         ref={bannerRef}
-        className="max-w-6xl mx-auto flex justify-between px-12 pt-25 pb-20"
+        className="max-w-6xl mx-auto flex flex-col md:flex-row md:justify-between px-12 pt-20 pb-10"
         style={{ opacity: 0 }}
       >
         <div className="flex-5">
@@ -33,12 +33,12 @@ const Banner = () => {
         skills to real-world applications."
           />
         </div>
-        <div className="flex-5">
+        <div className="flex-5 pt-4">
           <BannerImage image={projectsBanner} altText="Projects Banner" />
         </div>
       </div>
       {/*horizontal line*/}
-      <div className="border-b-4 border-yellow-200 shadow-xl" />
+      <div className="border-b-3 border-yellow-200 shadow-xl" />
     </>
   );
 };

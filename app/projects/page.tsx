@@ -1,12 +1,11 @@
-'use client';
-
 import Banner from '@/components/layouts/Banner';
+import CardContainer from '@/components/layouts/CardContainer';
 
 const ProjectsPage = () => {
   return (
     <main>
       <Banner />
-      <div className="bg-yellow-50 h-700">projects</div>
+      <CardContainer />
     </main>
   );
 };
