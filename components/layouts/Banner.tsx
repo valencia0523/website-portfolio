@@ -7,7 +7,7 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 
 const Banner = () => {
-  const bannerRef = useRef(null);
+  const bannerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     gsap.fromTo(

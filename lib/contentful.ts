@@ -36,11 +36,13 @@ interface ImageField {
 interface ProjectSkeleton extends EntrySkeletonType {
   fields: {
     title: string;
-    url: string;
-    techStack?: Document | null;
+    description?: string;
+    url?: string;
+    githubUrl?: string;
     // image?: Asset[];
     // image?: { fields: { file: { url: string } } }[];
     image?: ImageField[];
+    techStack?: Document | null;
   };
 }
 
@@ -52,7 +54,10 @@ export async function fetchProjects(): Promise<Project[]> {
 
     // !!! Resolve the issue 'item:any' !!!!!
     const projects: Project[] = response.items.map((item: any) => {
-      const { title, url, techStack, image } = item.fields;
+      console.log(item);
+
+      const { title, url, techStack, image, description, githubUrl } =
+        item.fields;
       const img = image?.[0]?.fields?.file?.url || '';
       const id = item.sys.id;
       const techStackText =
@@ -60,7 +65,15 @@ export async function fetchProjects(): Promise<Project[]> {
           ? documentToPlainTextString(techStack)
           : '';
 
-      return { title, url, id, techStack: techStackText, image: img };
+      return {
+        title,
+        url,
+        id,
+        techStack: techStackText,
+        image: img,
+        description,
+        githubUrl,
+      };
     });
 
     return projects;
