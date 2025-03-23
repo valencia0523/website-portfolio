@@ -3,8 +3,10 @@ import Navbar from '@/components/layouts/Navbar';
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
+import { Suspense } from 'react';
+import Loading from '@/app/loading';
 
-//font
+// Font 설정
 const roboto = Roboto({ subsets: ['latin'], weight: ['400'] });
 
 export const metadata: Metadata = {
@@ -30,7 +32,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          <main className="pt-20">{children}</main>
+          <Suspense fallback={<Loading />}>
+            <main className="pt-22">{children}</main>
+          </Suspense>
         </ThemeProvider>
       </body>
     </html>

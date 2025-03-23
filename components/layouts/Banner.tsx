@@ -3,19 +3,10 @@
 import BannerText from '../ui/BannerText';
 import BannerImage from '../ui/BannerImage';
 import projectsBanner from '@/public/images/projects-banner.png';
-import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
+import { useGsapFadeInUp } from '@/hooks/useGsapFadeInUp';
 
 const Banner = () => {
-  const bannerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    gsap.fromTo(
-      bannerRef.current,
-      { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 2, ease: 'power3.out' }
-    );
-  }, []);
+  const bannerRef = useGsapFadeInUp();
 
   return (
     <>

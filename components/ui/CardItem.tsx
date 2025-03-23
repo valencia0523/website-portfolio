@@ -1,8 +1,6 @@
 import { Project } from '@/lib/types';
 import Image from 'next/image';
 import ImageComingSoon from '@/public/images/image-coming-soon.jpg';
-import gsap from 'gsap';
-import { useEffect, useRef } from 'react';
 import {
   Dialog,
   DialogContent,
@@ -11,20 +9,12 @@ import {
   DialogHeader,
   DialogDescription,
 } from '@/components/ui/dialog';
+import { useGsapFadeInLeft } from '@/hooks/useGsapFadeInLeft';
 
 const CardItem = (props: Project) => {
   const { id, title, url, githubUrl, techStack, image, description } = props;
   const imageSrc = image ? `https:${image}` : ImageComingSoon;
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  // CardItem animation effect
-  useEffect(() => {
-    gsap.fromTo(
-      containerRef.current,
-      { opacity: 0, x: -50 },
-      { opacity: 1, x: 0, duration: 2, ease: 'power3.out' }
-    );
-  }, []);
+  const containerRef = useGsapFadeInLeft();
 
   return (
     <Dialog>

@@ -8,33 +8,7 @@ import { FaGithub } from 'react-icons/fa';
 import { Button } from '@/components/ui/button';
 import { DarkModeToggle } from '../ui/darkModeToggle';
 import { usePathname } from 'next/navigation';
-
-type NavbarItems = {
-  href: string;
-  label: string;
-  icon?: React.ReactNode;
-};
-
-//navbar list
-const navbarItems: NavbarItems[] = [
-  { href: '/about', label: 'about' },
-  { href: '/projects', label: 'projects' },
-  { href: '/blog', label: 'blog' },
-  { href: '/contact', label: 'contact' },
-];
-
-const navbarIcons: NavbarItems[] = [
-  {
-    href: 'www.linkedin.com/in/valencia0523',
-    label: 'LinkedIn',
-    icon: <FaLinkedin />,
-  },
-  {
-    href: 'https://github.com/valencia28',
-    label: 'GitHub',
-    icon: <FaGithub />,
-  },
-];
+import { navbarItems, navbarIcons } from '@/lib/navItems';
 
 function Navbar() {
   //button
@@ -131,7 +105,12 @@ function Navbar() {
         <div className="flex text-4xl gap-3 ml-2">
           {navbarIcons.map((icon) => {
             return (
-              <Link key={icon.href} href={icon.href}>
+              <Link
+                key={icon.href}
+                href={icon.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {icon.icon}
               </Link>
             );

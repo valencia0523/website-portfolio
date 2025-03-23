@@ -1,21 +1,32 @@
 'use client';
 
 import { fetchProjects } from '@/lib/contentful';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Project } from '@/lib/types';
 import CardItem from '../ui/CardItem';
+import Loading from '@/app/loading';
 
 const CardContainer = () => {
   const [projects, setProjects] = useState<Project[]>([]);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const getProjects = async () => {
-      const data = await fetchProjects();
-      setProjects(data);
+      try {
+        const data = await fetchProjects();
+        setProjects(data);
+      } catch (error) {
+        setError('❌ Failed to load projects. Please try again.');
+      } finally {
+        setLoading(false);
+      }
     };
     getProjects();
   }, []);
+
+  if (loading) return <Loading />;
+  if (error) return <div className="text-red-500 text-center p-4">{error}</div>;
 
   return (
     <div className="bg-yellow-50">
