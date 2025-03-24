@@ -1,4 +1,5 @@
 import { StaticImageData } from 'next/image';
+import React from 'react';
 
 // project type
 export type Project = {
@@ -12,15 +13,29 @@ export type Project = {
   techStack: string;
 };
 
-// image props type
-export type ImageProp = {
+// banner props type
+export type TextBannerProps = {
+  title: string;
+  subtitle: string;
+  description: string;
+};
+
+export type ImageBannerProps = {
   image: StaticImageData;
   altText: string;
 };
+
+export type BannerProps = TextBannerProps & Partial<ImageBannerProps>;
 
 // navbar item type
 export type NavbarItem = {
   href: string;
   label: string;
   icon?: React.ReactNode;
+};
+
+//tech stack icons type
+export type techStackIcon = {
+  label: string;
+  icon: React.ReactNode;
 };

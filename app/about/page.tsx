@@ -1,24 +1,20 @@
-import { fetchProjects } from '@/lib/contentful';
+import Banner from '@/components/layouts/Banner';
+import SectionContainer from '@/components/layouts/SectionContainer';
+import aboutBanner from '@/public/images/about-banner.jpg';
 
-export default async function AboutPage() {
-  const projects = await fetchProjects();
-  console.log(
-    '📸 프로젝트 이미지 목록:',
-    projects.map((p) => ({ id: p.id, image: p.image }))
-  );
-
+const page = () => {
   return (
-    <main className="p-6">
-      <h1 className="text-2xl font-bold mb-4">My Projects</h1>
-      {projects.map((project) => (
-        <div key={project.id} className="mb-4">
-          <h2 className="text-xl font-semibold">{project.title}</h2>
-          <img src={project.image} alt={project.title} />
-          <h3>{project.techStack}</h3>
-        </div>
-      ))}
+    <main>
+      <Banner
+        title="about."
+        subtitle="Aspiring front-end developer based in the UK."
+        description="Previously a language tester for e-commerce platforms, I collaborated with developers to refine user experiences. Now, I'm crafting intuitive web applications. When not coding, I enjoy exploring tech, blogging, and a good cup of tea."
+        image={aboutBanner}
+        altText="About Banner"
+      />
+      <SectionContainer title="Tech Stack" />
     </main>
   );
-}
+};
 
-// export default AboutPage;
+export default page;

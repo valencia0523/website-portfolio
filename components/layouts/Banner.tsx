@@ -2,10 +2,16 @@
 
 import BannerText from '../ui/BannerText';
 import BannerImage from '../ui/BannerImage';
-import projectsBanner from '@/public/images/projects-banner.png';
 import { useGsapFadeInUp } from '@/hooks/useGsapFadeInUp';
+import { BannerProps } from '@/lib/types';
 
-const Banner = () => {
+const Banner = ({
+  title,
+  subtitle,
+  description,
+  image,
+  altText,
+}: BannerProps) => {
   const bannerRef = useGsapFadeInUp();
 
   return (
@@ -17,15 +23,15 @@ const Banner = () => {
       >
         <div className="flex-5">
           <BannerText
-            title="portfolio."
-            subtitle="Explore my projects as I refine my front-end development skills."
-            description="I’ve worked on small team projects and individual builds, focusing on
-        clean code, responsiveness, and usability. Now, I'm eager to bring these
-        skills to real-world applications."
+            title={title}
+            subtitle={subtitle}
+            description={description}
           />
         </div>
         <div className="flex-5 pt-4">
-          <BannerImage image={projectsBanner} altText="Projects Banner" />
+          {image && (
+            <BannerImage image={image} altText={altText || 'Banner image'} />
+          )}
         </div>
       </div>
       {/*horizontal line*/}

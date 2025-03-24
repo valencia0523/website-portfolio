@@ -3,7 +3,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import {
   Form,
@@ -16,7 +16,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import Image from 'next/image';
-import contactImg from '@/public/images/contactImg.jpg';
+import contactImg from '@/public/images/contact-image.jpg';
 import { useGsapFadeInUp } from '@/hooks/useGsapFadeInUp';
 import Loading from '@/app/loading';
 import { navbarIcons } from '@/lib/navItems';
@@ -37,6 +37,9 @@ const ContactPage = () => {
   const [isPageLoading, setIsPageLoading] = useState(true);
   const [responseMessage, setResponseMessage] = useState<string | null>(null);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
+
+  //////!!!!!!!!!!!!!! ispageloading을 다 없애면 애니메이션 적용되고 있으면 적용이 안됨!!! 해결 필요!!!!
+
   const contactRef = useGsapFadeInUp();
 
   useEffect(() => {
@@ -90,15 +93,12 @@ const ContactPage = () => {
   if (isPageLoading) return <Loading />;
 
   return (
-    // <div ref={contactRef} className={`${isImageLoaded ? '' : 'opacity-0'}`}>
     <div
       ref={contactRef}
       className={`${
         isImageLoaded ? '' : 'opacity-0'
       } relative flex flex-col items-center md:flex-row md:justify-center md:mt-15`}
     >
-      {/* <div className="h-[400px] md:h-full md:mt-20 md:ml-130 md:relative md:z-10 md:pointer-events-none"> */}
-      {/* <div className="h-[400px] md:absolute md:left-1/3 md:transform md:-translate-x-1/3 md:h-150 md:z-10"> */}
       <div className="relative w-full h-[420px] md:w-md md:h-full z-10">
         <Image
           src={contactImg}
@@ -109,14 +109,7 @@ const ContactPage = () => {
           onLoad={() => setIsImageLoaded(true)}
         />
       </div>
-      {/* <div
-        className="max-w-sm mx-auto p-6 border rounded-md shadow-md
-      md:absolute md:top-50 md:left-241 md:w-full md:h-150 md:pt-20"
-      > */}
-      {/* <div
-        className="relative max-w-sm mx-auto p-6 border rounded-md shadow-md z-0 
-      md:mt-20 md:top-15 md:left-40 md:w-500 md:h-150"
-      > */}
+
       <div className="relative w-full max-w-md p-6 border rounded-md shadow-md md:h-140 md:max-h-auto md:mt-20 md:ml-[-10px] md:pt-15">
         <h2 className="text-xl font-semibold mb-4 md:text-4xl md:mb-8">
           Contact Me
