@@ -35,7 +35,7 @@ const Banner = ({
         </div>
       </div>
       {/*horizontal line*/}
-      <div className="border-b-3 border-yellow-200 shadow-xl" />
+      <div className="border-b-3 border-yellow-100 shadow-amber-500" />
     </>
   );
 };

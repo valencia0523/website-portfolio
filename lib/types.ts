@@ -35,7 +35,13 @@ export type NavbarItem = {
 };
 
 //tech stack icons type
-export type techStackIcon = {
+export type TechStackIcon = {
   label: string;
   icon: React.ReactNode;
+};
+
+//section container props
+export type SectionContainerProps = {
+  title: string;
+  children?: React.ReactNode;
 };
