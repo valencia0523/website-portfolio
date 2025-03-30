@@ -4,11 +4,11 @@ import {
   SiTypescript,
   SiTailwindcss,
   SiJira,
-  SiMysql,
   SiNextdotjs,
   SiReactquery,
 } from 'react-icons/si';
 import { RiJavascriptFill } from 'react-icons/ri';
+import { GrMysql } from 'react-icons/gr';
 
 export const techStackIcons: TechStackIcon[] = [
   { label: 'React', icon: <FaReact /> },
@@ -19,5 +19,5 @@ export const techStackIcons: TechStackIcon[] = [
   { label: 'Tailwind CSS', icon: <SiTailwindcss /> },
   { label: 'GitHub', icon: <FaGithub /> },
   { label: 'Jira', icon: <SiJira /> },
-  { label: 'MySQL', icon: <SiMysql /> },
+  { label: 'MySQL', icon: <GrMysql /> },
 ];

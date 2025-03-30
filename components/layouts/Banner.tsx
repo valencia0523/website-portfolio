@@ -11,6 +11,7 @@ const Banner = ({
   description,
   image,
   altText,
+  styleCss,
 }: BannerProps) => {
   const bannerRef = useGsapFadeInUp();
 
@@ -30,7 +31,11 @@ const Banner = ({
         </div>
         <div className="flex-5 pt-4">
           {image && (
-            <BannerImage image={image} altText={altText || 'Banner image'} />
+            <BannerImage
+              image={image}
+              altText={altText || 'Banner image'}
+              styleCss={styleCss || ''}
+            />
           )}
         </div>
       </div>

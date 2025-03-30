@@ -23,6 +23,7 @@ export type TextBannerProps = {
 export type ImageBannerProps = {
   image: StaticImageData;
   altText: string;
+  styleCss: string;
 };
 
 export type BannerProps = TextBannerProps & Partial<ImageBannerProps>;

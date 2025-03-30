@@ -1,10 +1,50 @@
+'use client';
+
 import Banner from '@/components/layouts/Banner';
 import SectionContainer from '@/components/layouts/SectionContainer';
 import TechStack from '@/components/ui/TechStack';
 import aboutBanner from '@/public/images/about-banner.jpg';
+import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect, useRef, useState } from 'react';
+import { BiSolidVideoRecording } from 'react-icons/bi';
+import randomFactsImg from '@/public/images/random-facts-image-1.jpg';
+import { Button } from '@/components/ui/button';
 
 const page = () => {
+  // random facts icon & image
+  const [showIcon, setShowIcon] = useState(true);
+  const [showImage, setShowImage] = useState(false);
+  const [hasImageShown, setHasImageShown] = useState(false);
+
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasImageShown) {
+          setShowIcon(true);
+          setTimeout(() => {
+            setShowIcon(false);
+            setShowImage(true);
+            setHasImageShown(true);
+          }, 2000);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, [hasImageShown]);
+
   return (
     <main>
       <header>
@@ -14,24 +54,74 @@ const page = () => {
           description="Previously a language tester for e-commerce platforms, I collaborated with developers to refine user experiences. Now, I'm crafting intuitive web applications. When not coding, I enjoy exploring tech, blogging, and a good cup of tea."
           image={aboutBanner}
           altText="About Banner"
+          styleCss="md:w-3/4 md:h-auto"
         />
       </header>
 
-      <section>
+      {/* tech stack */}
+      <section className="bg-yellow-50">
         <SectionContainer title="Tech Stack">
           <TechStack />
-          {/* Link to the projects page */}
-          <Link
-            href="/projects"
-            className="mt-10 text-[1.15rem] flex justify-end italic underline text-yellow-500"
-          >
-            View Projects
-          </Link>
+          <div className="flex flex-col items-end gap-7">
+            {/* Link to the projects page */}
+            <Link
+              href="/cv-sample.pdf"
+              download
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 text-[1.1rem] italic text-yellow-500 lg:text-xl hover:text-yellow-400"
+            >
+              💡<span className="underline">Download CV</span>
+            </Link>
+
+            {/* CV download link */}
+            <Link href="/projects" className="w-full lg:w-38">
+              <Button
+                type="button"
+                className="rounded-xl text-xl cursor-pointer w-full"
+              >
+                View Projects
+              </Button>
+            </Link>
+          </div>
         </SectionContainer>
       </section>
 
-      <section>
-        <SectionContainer title="Random Facts"></SectionContainer>
+      {/* random facts */}
+      <section ref={sectionRef}>
+        <SectionContainer title="Random Facts">
+          <div className="md:flex">
+            <div className="flex flex-col items-center pt-10 pb-5">
+              {showIcon && (
+                <BiSolidVideoRecording className="text-8xl text-red-700 animate-pulse" />
+              )}
+              {showImage && (
+                <Image src={randomFactsImg} alt="random facts image" />
+              )}
+            </div>
+            <div>
+              <div className="text-xl mt-3 text-gray-500">
+                Tech by Day, Vlogs by Night
+              </div>
+              <p className="mt-5 mb-2 text-[1.1rem]">
+                I capture my everyday life and travel adventures through vlogs
+                here in the UK. During the week, I work as a front-end
+                developer, but come the weekend, I switch gears to video editing
+                and YouTube content creation. If you're interested in connecting
+                or curious about my daily life, feel free to visit{' '}
+                <a
+                  href="https://www.youtube.com/@valencialog"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline italic text-yellow-500"
+                >
+                  Valencia LOG
+                </a>
+                {''} and join me on my journey!
+              </p>
+            </div>
+          </div>
+        </SectionContainer>
       </section>
     </main>
   );

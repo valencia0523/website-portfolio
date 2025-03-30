@@ -1,10 +1,8 @@
 import { SectionContainerProps } from '@/lib/types';
-import TechStack from '../ui/TechStack';
-import Link from 'next/link';
 
 const SectionContainer = ({ title, children }: SectionContainerProps) => {
   return (
-    <div className=" bg-yellow-50">
+    <div className="max-w-6xl mx-auto">
       <div className="py-15 px-15">
         <div className="text-4xl text-center">{title}</div>
         {children}
