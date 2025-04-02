@@ -97,7 +97,7 @@ const ContactPage = () => {
       ref={contactRef}
       className={`${
         isImageLoaded ? '' : 'opacity-0'
-      } relative flex flex-col items-center md:flex-row md:justify-center md:mt-15`}
+      } pt-20 relative flex flex-col items-center md:flex-row md:justify-center md:mt-15`}
     >
       <div className="relative w-full h-[420px] md:w-md md:h-full z-10">
         <Image
@@ -176,7 +176,7 @@ const ContactPage = () => {
               <Button
                 type="submit"
                 disabled={loading}
-                className="rounded-4xl md:text-[1rem] cursor-pointer"
+                className="rounded-xl md:text-[1rem] cursor-pointer"
               >
                 {loading ? 'Sending...' : 'Send Message'}
               </Button>

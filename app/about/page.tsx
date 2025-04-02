@@ -46,7 +46,7 @@ const page = () => {
   }, [hasImageShown]);
 
   return (
-    <main>
+    <main className="pt-20">
       <header>
         <Banner
           title="about."
@@ -90,16 +90,20 @@ const page = () => {
       {/* random facts */}
       <section ref={sectionRef}>
         <SectionContainer title="Random Facts">
-          <div className="md:flex">
-            <div className="flex flex-col items-center pt-10 pb-5">
+          <div className="md:flex md:flex-row">
+            <div className="flex flex-col items-center pt-5 pb-5 md:flex-4">
               {showIcon && (
-                <BiSolidVideoRecording className="text-8xl text-red-700 animate-pulse" />
+                <BiSolidVideoRecording className="text-8xl text-red-700 animate-pulse md:text-9xl md:mt-15" />
               )}
               {showImage && (
-                <Image src={randomFactsImg} alt="random facts image" />
+                <Image
+                  src={randomFactsImg}
+                  alt="random facts image"
+                  className="md:w-1/2 md:mt-3 rounded-xl"
+                />
               )}
             </div>
-            <div>
+            <div className="md:flex-3 md:mt-15">
               <div className="text-xl mt-3 text-gray-500">
                 Tech by Day, Vlogs by Night
               </div>

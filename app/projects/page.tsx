@@ -4,7 +4,7 @@ import projectsBanner from '@/public/images/projects-banner.png';
 
 const ProjectsPage = () => {
   return (
-    <main>
+    <main className="pt-20">
       <Banner
         title="projects."
         subtitle="Explore my projects as I refine my front-end development skills."

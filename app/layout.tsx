@@ -33,7 +33,7 @@ export default function RootLayout({
         >
           <Navbar />
           <Suspense fallback={<Loading />}>
-            <main className="pt-22">{children}</main>
+            <main>{children}</main>
           </Suspense>
         </ThemeProvider>
       </body>
