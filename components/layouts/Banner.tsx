@@ -40,7 +40,7 @@ const Banner = ({
         </div>
       </div>
       {/*horizontal line*/}
-      <div className="border-b-3 border-yellow-100 shadow-amber-500" />
+      <div className="border-b-3 border-yellow-100 shadow-amber-500 dark:border-gray-700" />
     </>
   );
 };

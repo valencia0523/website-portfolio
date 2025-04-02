@@ -54,12 +54,12 @@ const page = () => {
           description="Previously a language tester for e-commerce platforms, I collaborated with developers to refine user experiences. Now, I'm crafting intuitive web applications. When not coding, I enjoy exploring tech, blogging, and a good cup of tea."
           image={aboutBanner}
           altText="About Banner"
-          styleCss="md:w-3/4 md:h-auto"
+          styleCss="md:w-3/4 md:h-auto dark:brightness-75"
         />
       </header>
 
       {/* tech stack */}
-      <section className="bg-yellow-50">
+      <section className="bg-yellow-50 dark:bg-[#161d27]">
         <SectionContainer title="Tech Stack">
           <TechStack />
           <div className="flex flex-col items-end gap-7">
@@ -99,7 +99,7 @@ const page = () => {
                 <Image
                   src={randomFactsImg}
                   alt="random facts image"
-                  className="md:w-1/2 md:mt-3 rounded-xl"
+                  className="md:w-1/2 md:mt-3 rounded-xl dark:brightness-75"
                 />
               )}
             </div>

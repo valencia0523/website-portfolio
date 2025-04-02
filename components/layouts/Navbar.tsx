@@ -21,11 +21,14 @@ function Navbar() {
     <nav
       className="fixed top-0 left-0 w-full z-50 p-5
       lg:flex lg:justify-center lg:gap-100   
-      bg-[#FFE87C] dark:bg-[#202920]"
+      bg-[#FFE87C] dark:bg-[#192d4b]"
     >
       <div className="flex justify-between">
         {/* logo */}
-        <Button className="mt-1.5 text-3xl caveat-brush-regular rounded-3xl shadow-current dark:shadow-amber-200">
+        <Button
+          onClick={() => setIsNavbarOpen(false)}
+          className="mt-1.5 text-3xl caveat-brush-regular rounded-3xl shadow-current dark:shadow-amber-200"
+        >
           <Link href="/">Valencia M</Link>
         </Button>
 
@@ -115,7 +118,7 @@ function Navbar() {
               </Link>
             );
           })}
-          <DarkModeToggle className="ml-3 scale-93 hover:cursor-pointer" />
+          <DarkModeToggle className="ml-3 scale-93 hover:cursor-pointer dark:shadow-[0_0_15px_#ffd70050]" />
         </div>
       </div>
     </nav>

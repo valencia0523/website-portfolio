@@ -105,12 +105,16 @@ const ContactPage = () => {
           alt="contact image"
           height={400}
           width={300}
-          className="w-full h-full object-cover "
+          className="w-full h-full object-cover dark:brightness-75"
           onLoad={() => setIsImageLoaded(true)}
         />
       </div>
 
-      <div className="relative w-full max-w-md p-6 border rounded-md shadow-md md:h-140 md:max-h-auto md:mt-20 md:ml-[-10px] md:pt-15">
+      <div
+        className="relative w-full max-w-md p-6 border rounded-md shadow-md 
+      md:h-140 md:max-h-auto md:mt-20 md:ml-[-10px] md:pt-15
+      dark:border-gray-700"
+      >
         <h2 className="text-xl font-semibold mb-4 md:text-4xl md:mb-8">
           Contact Me
         </h2>

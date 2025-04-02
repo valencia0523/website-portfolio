@@ -21,7 +21,8 @@ const CardItem = (props: Project) => {
       <DialogTrigger>
         <div
           className="flex flex-col items-center shadow-xl bg-white rounded-[12px]
-      hover:shadow-2xl hover:cursor-pointer opacity-0 w-full max-w-[320px]"
+      hover:shadow-2xl hover:cursor-pointer opacity-0 w-full max-w-[320px]
+      dark:bg-[#192d4b]  dark:border-[#ffffff30] dark:shadow-[0_0_15px_#ffd70050]"
           ref={containerRef}
         >
           <div className="rounded-[12px] py-3 lg:px-3">
@@ -36,7 +37,7 @@ const CardItem = (props: Project) => {
             </div>
             <div className="text-left my-2 pl-1.5 w-full max-w-[265px] lg:mx-1 lg:my-4">
               <div className="text-xl lg:text-2xl">{title}</div>
-              <div className="text-gray-600 mt-1 line-clamp-3 h-[70px] overflow-hidden lg:mt-2">
+              <div className="text-gray-600 mt-1 line-clamp-3 h-[70px] overflow-hidden lg:mt-2 dark:text-gray-400">
                 {description}
               </div>
             </div>
@@ -64,7 +65,7 @@ const CardItem = (props: Project) => {
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#FFE87C] px-1 py-0.5 rounded-[4px] 
-              hover:bg-yellow-300 hover:shadow-md"
+              hover:bg-yellow-600 hover:shadow-md dark:text-black"
             >
               Live Site
             </a>
@@ -73,15 +74,17 @@ const CardItem = (props: Project) => {
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#FFE87C] px-1 py-0.5 rounded-[4px]
-               hover:bg-yellow-300 hover:shadow-md"
+               hover:bg-yellow-600 hover:shadow-md  dark:text-black"
             >
               GitHub
             </a>
           </div>
         </DialogHeader>
         <DialogDescription className="mx-1.5 lg:text-[1.2rem] lg:mx-5 lg:my-3">
-          <p className="text-black">{description}</p>
-          <div className="text-gray-600 mt-1.5 lg:mt-2">{techStack}</div>
+          <p className="text-black dark:text-[#f0f0f0]">{description}</p>
+          <div className="text-gray-600 mt-1.5 lg:mt-2 dark:text-gray-400">
+            {techStack}
+          </div>
         </DialogDescription>
       </DialogContent>
     </Dialog>
