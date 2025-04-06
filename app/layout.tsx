@@ -5,6 +5,7 @@ import { Roboto } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Suspense } from 'react';
 import Loading from '@/app/loading';
+import Footer from '@/components/layouts/Footer';
 
 // Font
 const roboto = Roboto({ subsets: ['latin'], weight: ['400'] });
@@ -58,10 +59,13 @@ export default function RootLayout({
       </head>
       <body className={roboto.className}>
         <ThemeProvider>
-          <Navbar />
-          <Suspense fallback={<Loading />}>
-            <main>{children}</main>
-          </Suspense>
+          <div className="min-h-screen flex flex-col justify-between">
+            <Navbar />
+            <Suspense fallback={<Loading />}>
+              <main className="grow">{children}</main>
+            </Suspense>
+            <Footer />
+          </div>
         </ThemeProvider>
       </body>
     </html>

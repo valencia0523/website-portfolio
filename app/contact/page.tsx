@@ -97,9 +97,9 @@ const ContactPage = () => {
       ref={contactRef}
       className={`${
         isImageLoaded ? '' : 'opacity-0'
-      } pt-20 relative flex flex-col items-center md:flex-row md:justify-center md:mt-15`}
+      } relative flex flex-col items-center mb-10 md:flex-row md:justify-center md:pt-25`}
     >
-      <div className="relative w-full h-[420px] md:w-md md:h-full z-10">
+      <div className="relative w-full h-[420px] z-10 md:w-md md:h-auto">
         <Image
           src={contactImg}
           alt="contact image"
@@ -111,7 +111,7 @@ const ContactPage = () => {
       </div>
 
       <div
-        className="relative w-full max-w-md p-6 border rounded-md shadow-md 
+        className="relative w-full max-w-md p-6 md:border rounded-md md:shadow-md 
       md:h-140 md:max-h-auto md:mt-20 md:ml-[-10px] md:pt-15
       dark:border-gray-700"
       >

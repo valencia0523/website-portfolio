@@ -7,9 +7,6 @@ const SectionContainer = ({ title, children }: SectionContainerProps) => {
         <div className="text-4xl text-center">{title}</div>
         {children}
       </div>
-
-      {/*horizontal line*/}
-      <div className="border-b-3 border-yellow-100 shadow-amber-500" />
     </div>
   );
 };

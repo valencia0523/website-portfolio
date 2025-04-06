@@ -9,8 +9,8 @@ import Link from 'next/link';
 function HomePage() {
   return (
     <main
-      className="flex flex-col px-3.5 h-screen bg-yellow-50 justify-center md:flex-row 
-    md:items-center md:justify-center md:bg-transparent dark:bg-[#1e2230]"
+      className="flex flex-col px-3.5 h-[90vh] justify-center -mb-10
+      md:flex-row md:items-center md:justify-center md:bg-transparent dark:bg-[#1e2230]"
     >
       <section className="bg-yellow-50">
         <Image
@@ -20,7 +20,7 @@ function HomePage() {
         ></Image>
       </section>
 
-      <section className="bg-yellow-50 md:py-50 md:px-15 md:mt-15 dark:bg-[#1e2230]">
+      <section className="md:bg-yellow-50 md:py-50 md:px-15 md:mt-15 dark:bg-[#1e2230]">
         <div className="flex gap-2 text-2xl">
           <div>Curious</div>
           <span className="font-bold inline-block min-w-[180px]">

@@ -21,13 +21,14 @@ const page = () => {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
+      ([entry], obs) => {
         if (entry.isIntersecting && !hasImageShown) {
           setShowIcon(true);
           setTimeout(() => {
             setShowIcon(false);
             setShowImage(true);
             setHasImageShown(true);
+            obs.disconnect();
           }, 2000);
         }
       },
@@ -39,9 +40,7 @@ const page = () => {
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
+      observer.disconnect();
     };
   }, [hasImageShown]);
 
@@ -87,8 +86,11 @@ const page = () => {
         </SectionContainer>
       </section>
 
+      {/*horizontal line*/}
+      <div className="border-b-3 border-yellow-100 shadow-amber-500 w-full dark:border-gray-700" />
+
       {/* random facts */}
-      <section ref={sectionRef}>
+      <section ref={sectionRef} className="dark:bg-[#161d27]">
         <SectionContainer title="Random Facts">
           <div className="md:flex md:flex-row">
             <div className="flex flex-col items-center pt-5 pb-5 md:flex-4">

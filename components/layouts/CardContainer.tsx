@@ -29,8 +29,8 @@ const CardContainer = () => {
   if (error) return <div className="text-red-500 text-center p-4">{error}</div>;
 
   return (
-    <div className="bg-yellow-50 dark:bg-[#161d27]">
-      <div className="max-w-6xl mx-auto py-12 px-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="bg-yellow-50 dark:bg-[#161d27] -mb-10">
+      <div className="max-w-6xl mx-auto py-20 px-8 grid grid-cols-1 md:grid-cols-3 gap-6">
         {projects.map((item) => {
           return <CardItem key={item.id} {...item} />;
         })}
