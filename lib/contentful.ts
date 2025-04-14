@@ -54,6 +54,7 @@ export async function fetchProjects(): Promise<Project[]> {
     });
 
     // !!! Resolve the issue 'item:any' !!!!!
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const projects: Project[] = response.items.map((item: any) => {
       //Added const fields due to the type any
       const fields = item.fields as {
