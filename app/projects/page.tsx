@@ -1,6 +1,6 @@
 import Banner from '@/components/layouts/Banner';
 import CardContainer from '@/components/layouts/CardContainer';
-import projectsBanner from '@/public/images/projects-banner.png';
+import projectsBanner from '@/public/images/projects-banner-no-background.png';
 
 const ProjectsPage = () => {
   return (

@@ -1,13 +1,7 @@
+import React from 'react';
 
-
-const BlogPage = () => {
-  return (
-<>
-<h1>blogpage</h1>
-
-</>
-
-  );
+const page = () => {
+  return <div>blog page is coming soon...</div>;
 };
 
-export default BlogPage;
+export default page;

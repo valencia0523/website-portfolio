@@ -5,7 +5,7 @@ import { NavbarItem } from './types';
 export const navbarItems: NavbarItem[] = [
   { href: '/about', label: 'about' },
   { href: '/projects', label: 'projects' },
-  { href: '/blog', label: 'blog' },
+  // { href: '/blog', label: 'blog' },
   { href: '/contact', label: 'contact' },
 ];
 

@@ -13,7 +13,7 @@ const Footer = () => {
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         className="rounded-t-full w-25 bg-[#ffe87c] dark:bg-[#192d4b] dark:text-white cursor-pointer hover:bg-[#ffe87c]"
       >
-        <FaChevronUp className="scale-150  dark:text-[#f0f0f0]" />
+        <FaChevronUp className="scale-150 dark:text-[#f0f0f0]" />
       </Button>
 
       {/* page link */}
@@ -27,6 +27,7 @@ const Footer = () => {
             return (
               <Link
                 href={item.href}
+                key={item.href}
                 className="hover:text-gray-600 dark:hover:text-gray-300"
               >
                 {item.label}
