@@ -54,6 +54,22 @@ export async function fetchProjects(): Promise<Project[]> {
 
     // !!! Resolve the issue 'item:any' !!!!!
     const projects: Project[] = response.items.map((item: any) => {
+      //Added const fields due to the type any
+      const fields = item.fields as {
+        title: string;
+        url?: string;
+        description?: string;
+        githubUrl?: string;
+        image?: {
+          fields: {
+            file: {
+              url: string;
+            };
+          };
+        }[];
+        techStack?: Document | null;
+      };
+
       console.log(item);
 
       const { title, url, techStack, image, description, githubUrl } =
