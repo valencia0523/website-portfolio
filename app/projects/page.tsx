@@ -8,7 +8,7 @@ const ProjectsPage = () => {
       <Banner
         title="projects."
         subtitle="Explore my projects as I refine my front-end development skills."
-        description="I’ve worked on small team projects and individual builds, focusing on
+        description="I've worked on small team projects and individual builds, focusing on
         clean code, responsiveness, and usability. Now, I'm eager to bring these
         skills to real-world applications."
         image={projectsBanner}

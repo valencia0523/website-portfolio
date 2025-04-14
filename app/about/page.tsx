@@ -11,7 +11,7 @@ import { BiSolidVideoRecording } from 'react-icons/bi';
 import randomFactsImg from '@/public/images/random-facts-image-1.jpg';
 import { Button } from '@/components/ui/button';
 
-const page = () => {
+const AboutPage = () => {
   // random facts icon & image
   const [showIcon, setShowIcon] = useState(true);
   const [showImage, setShowImage] = useState(false);
@@ -113,8 +113,8 @@ const page = () => {
                 I capture my everyday life and travel adventures through vlogs
                 here in the UK. During the week, I work as a front-end
                 developer, but come the weekend, I switch gears to video editing
-                and YouTube content creation. If you're interested in connecting
-                or curious about my daily life, feel free to visit{' '}
+                and YouTube content creation. If you&apos;re interested in
+                connecting or curious about my daily life, feel free to visit{' '}
                 <a
                   href="https://www.youtube.com/@valencialog"
                   target="_blank"
@@ -133,4 +133,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default AboutPage;
