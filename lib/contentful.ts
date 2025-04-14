@@ -1,6 +1,7 @@
 import { createClient, EntrySkeletonType } from 'contentful';
 import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 import { Project } from './types';
+import { Block } from '@contentful/rich-text-types';
 
 const accessToken = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN;
 if (!accessToken) {
@@ -72,13 +73,12 @@ export async function fetchProjects(): Promise<Project[]> {
 
       console.log(item);
 
-      const { title, url, techStack, image, description, githubUrl } =
-        item.fields;
+      const { title, url, techStack, image, description, githubUrl } = fields;
       const img = image?.[0]?.fields?.file?.url || '';
       const id = item.sys.id;
       const techStackText =
         techStack && typeof techStack === 'object' && 'nodeType' in techStack
-          ? documentToPlainTextString(techStack)
+          ? documentToPlainTextString(techStack as unknown as Block)
           : '';
 
       return {
