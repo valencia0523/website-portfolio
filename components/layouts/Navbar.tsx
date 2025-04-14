@@ -3,8 +3,6 @@
 import Link from 'next/link';
 import { HiMenu } from 'react-icons/hi';
 import { useState } from 'react';
-import { FaLinkedin } from 'react-icons/fa';
-import { FaGithub } from 'react-icons/fa';
 import { Button } from '@/components/ui/button';
 import { DarkModeToggle } from '../ui/darkModeToggle';
 import { usePathname } from 'next/navigation';

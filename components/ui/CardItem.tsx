@@ -12,7 +12,7 @@ import {
 import { useGsapFadeInLeft } from '@/hooks/useGsapFadeInLeft';
 
 const CardItem = (props: Project) => {
-  const { id, title, url, githubUrl, techStack, image, description } = props;
+  const { title, url, githubUrl, techStack, image, description } = props;
   const imageSrc = image ? `https:${image}` : ImageComingSoon;
   const containerRef = useGsapFadeInLeft();
 

@@ -84,6 +84,7 @@ const ContactPage = () => {
         setResponseMessage('❌ Failed to send message.');
       }
     } catch (error) {
+      console.error(error);
       setResponseMessage('❌ An error occurred. Please try again.');
     } finally {
       setLoading(false);

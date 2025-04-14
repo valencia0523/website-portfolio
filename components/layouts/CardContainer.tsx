@@ -17,6 +17,7 @@ const CardContainer = () => {
         const data = await fetchProjects();
         setProjects(data);
       } catch (error) {
+        console.error(error);
         setError('❌ Failed to load projects. Please try again.');
       } finally {
         setLoading(false);
