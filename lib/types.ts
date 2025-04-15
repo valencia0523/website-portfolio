@@ -3,14 +3,13 @@ import React from 'react';
 
 // project type
 export type Project = {
-  //   fields?: React.ReactNode;
-  id: string;
   title: string;
-  description?: string;
   url?: string;
+  id: string;
+  techStack?: string;
+  image?: string;
+  description?: string;
   githubUrl?: string;
-  image?: string | StaticImageData;
-  techStack: string;
 };
 
 // banner props type

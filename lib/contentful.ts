@@ -1,7 +1,6 @@
 import { createClient, EntrySkeletonType } from 'contentful';
-import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 import { Project } from './types';
-import { Block } from '@contentful/rich-text-types';
+import { Asset } from 'contentful';
 
 const accessToken = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN;
 if (!accessToken) {
@@ -14,82 +13,41 @@ const client = createClient({
   accessToken,
 });
 
-/*
-interface ImageField {
-  fields: {
-    file: {
-      url: string;
-    };
-  };
-}
-*/
-
-interface ImageField {
-  metadata: unknown;
-  sys: unknown;
-  fields: {
-    file: {
-      url: string;
-    };
-  };
-}
-
-interface ProjectSkeleton extends EntrySkeletonType {
-  fields: {
-    title: string;
-    description?: string;
-    url?: string;
-    githubUrl?: string;
-    // image?: Asset[];
-    // image?: { fields: { file: { url: string } } }[];
-    image?: ImageField[];
-    techStack?: Document | null;
-  };
+interface MyPortfolioFields extends EntrySkeletonType {
+  title: string;
+  url?: string;
+  techStack?: string;
+  image?: Asset[];
+  description?: string;
+  githubUrl?: string;
 }
 
 export async function fetchProjects(): Promise<Project[]> {
   try {
-    const response = await client.getEntries<ProjectSkeleton>({
+    const response = await client.getEntries<MyPortfolioFields>({
       content_type: 'myPortfolio',
     });
 
-    // !!! Resolve the issue 'item:any' !!!!!
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const projects: Project[] = response.items.map((item: any) => {
-      //Added const fields due to the type any
-      const fields = item.fields as {
-        title: string;
-        url?: string;
-        description?: string;
-        githubUrl?: string;
-        image?: {
-          fields: {
-            file: {
-              url: string;
-            };
-          };
-        }[];
-        techStack?: Document | null;
-      };
+    const projects = response.items.map((item) => {
+      const { title, url, techStack, image, description, githubUrl } =
+        item.fields;
 
-      console.log(item);
-
-      const { title, url, techStack, image, description, githubUrl } = fields;
-      const img = image?.[0]?.fields?.file?.url || '';
-      const id = item.sys.id;
-      const techStackText =
-        techStack && typeof techStack === 'object' && 'nodeType' in techStack
-          ? documentToPlainTextString(techStack as unknown as Block)
+      const imageArray = image as Asset[];
+      const img =
+        typeof imageArray?.[0]?.fields?.file?.url === 'string'
+          ? imageArray[0].fields.file.url
           : '';
 
+      const id = item.sys.id;
+
       return {
-        title,
-        url,
+        title: typeof title === 'string' ? title : '',
+        url: typeof url === 'string' ? url : '',
         id,
-        techStack: techStackText,
-        image: img,
-        description,
-        githubUrl,
+        techStack: typeof techStack === 'string' ? techStack : '',
+        image: img ?? '',
+        description: typeof description === 'string' ? description : '',
+        githubUrl: typeof githubUrl === 'string' ? githubUrl : '',
       };
     });
 
