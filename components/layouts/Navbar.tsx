@@ -35,7 +35,7 @@ function Navbar() {
         <div className="mt-1.5">
           <Button
             size="icon"
-            className="scale-200 lg:hidden"
+            className="scale-200 lg:hidden hover:cursor-pointer hover:bg-transparent"
             variant="ghost"
             onClick={() => setIsNavbarOpen(!isNavbarOpen)}
           >
