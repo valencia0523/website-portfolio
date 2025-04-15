@@ -7,7 +7,6 @@ import {
   DialogTrigger,
   DialogTitle,
   DialogHeader,
-  DialogDescription,
 } from '@/components/ui/dialog';
 import { useGsapFadeInLeft } from '@/hooks/useGsapFadeInLeft';
 
