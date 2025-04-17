@@ -1,9 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { Button } from '../ui/button';
-import { FaChevronUp } from 'react-icons/fa';
 import { navbarItems } from '@/lib/navItems';
+// import { Button } from '../ui/button';
+// import { FaChevronUp } from 'react-icons/fa';
 
 const Footer = () => {
   return (
