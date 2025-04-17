@@ -37,9 +37,6 @@ const ContactPage = () => {
   const [isPageLoading, setIsPageLoading] = useState(true);
   const [responseMessage, setResponseMessage] = useState<string | null>(null);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
-
-  //////!!!!!!!!!!!!!! ispageloading을 다 없애면 애니메이션 적용되고 있으면 적용이 안됨!!! 해결 필요!!!!
-
   const contactRef = useGsapFadeInUp();
 
   useEffect(() => {

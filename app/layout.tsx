@@ -18,31 +18,6 @@ export const metadata: Metadata = {
     'Next.js, TypeScript, TailwindCSS, front-end development, web development, portfolio',
 };
 
-// original code
-// export default function RootLayout({
-//   children,
-// }: {
-//   children: React.ReactNode;
-// }) {
-//   return (
-//     <html lang="en" suppressHydrationWarning>
-//       <body className={roboto.className}>
-//         <ThemeProvider
-//           attribute="class"
-//           defaultTheme="system"
-//           enableSystem
-//           disableTransitionOnChange
-//         >
-//           <Navbar />
-//           <Suspense fallback={<Loading />}>
-//             <main>{children}</main>
-//           </Suspense>
-//         </ThemeProvider>
-//       </body>
-//     </html>
-//   );
-// }
-
 export default function RootLayout({
   children,
 }: {

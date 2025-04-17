@@ -1,7 +1,9 @@
-import React from 'react';
-
 const BlogPage = () => {
-  return <div>blog page is coming soon...</div>;
+  return (
+    <div>
+      <div>blog page is coming soon...</div>;
+    </div>
+  );
 };
 
 export default BlogPage;

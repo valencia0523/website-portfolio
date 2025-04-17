@@ -118,3 +118,9 @@
     font-style: normal;
   }
 }
+
+@media screen and (min-width: 1024px) and (max-width: 1366px) {
+  .hide-on-ipad-pro {
+    display: none !important;
+  }
+}

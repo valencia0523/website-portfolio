@@ -12,11 +12,11 @@ function HomePage() {
       className="flex flex-col px-3.5 h-[90vh] justify-center -mb-10
       md:flex-row md:items-center md:justify-center md:bg-transparent dark:bg-[#1e2230]"
     >
-      <section className="bg-yellow-50">
+      <section className="bg-yellow-50 hide-on-ipad-pro">
         <Image
           src={mainImage}
           alt="main page image"
-          className="hidden md:block w-[40vw] rounded-xl dark:brightness-75"
+          className="hidden lg:block w-[40vw] rounded-xl dark:brightness-75"
         ></Image>
       </section>
 

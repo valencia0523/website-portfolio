@@ -9,12 +9,12 @@ const Footer = () => {
   return (
     <footer className="flex flex-col items-center">
       {/* scroll top button */}
-      <Button
+      {/* <Button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         className="rounded-t-full w-25 bg-[#ffe87c] dark:bg-[#192d4b] dark:text-white cursor-pointer hover:bg-[#ffe87c]"
       >
         <FaChevronUp className="scale-150 dark:text-[#f0f0f0]" />
-      </Button>
+      </Button> */}
 
       {/* page link */}
       <section
