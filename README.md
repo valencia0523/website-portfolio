@@ -1,3 +1,5 @@
+![Project Preview](public/images/readme-img.png)
+
 # Valencia M's Portfolio
 
 Welcome to my personal portfolio! This site showcases my work as a front-end developer. It's built using **Next.js**, **React**, and **Tailwind CSS**.
