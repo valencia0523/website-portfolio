@@ -20,5 +20,5 @@ Welcome to my personal portfolio! This site showcases my work as a front-end dev
 ## 📬 Contact
 
 - **Email**: miyeon5230@gmail.com
-- **GitHub**: <a href="https://github.com/valencia0523" target="_blank">github.com/valencia0523</a>
-- **LinkedIn**: <a href="https://www.linkedin.com/in/valencia0523" target="_blank">linkedin.com/in/valencia0523</a>
+- **GitHub**: [github.com/valencia0523](https://github.com/valencia0523)
+- **LinkedIn**: [linkedin.com/in/valencia0523](https://www.linkedin.com/in/valencia0523)
