@@ -22,7 +22,7 @@ Welcome to my personal portfolio! This site showcases my work as a front-end dev
 - **React**
 - **Tailwind CSS**
 - **TypeScript**
-  **Vercel (Deployment)**
+- **Vercel (Deployment)**
 
 ## 📬 Contact
 
